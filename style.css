@@ -1,0 +1,35 @@
+.day, .month, .year {
+    display: inline-block;
+}
+
+#btn {
+    display: block;
+}
+
+.day__label, .day__input, .day__validation {
+    display: block;
+}
+
+.month__label, .month__input, .month__validation {
+    display: block;
+}
+
+.year__label, .year__input, .year__validation {
+    display: block;
+}
+
+.result__years, .result__months, .result__days {
+    display: block;
+}
+
+.result__years-number, .result__years-title {
+        display: inline-block;
+}
+
+.result__months-number, .result__months-title {
+    display: inline-block;
+}
+
+.result__days-number, .result__days-title {
+    display: inline-block;
+}

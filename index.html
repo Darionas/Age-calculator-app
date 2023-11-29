@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Frontend Mentor | Age calculator app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="Age calculator" />
+  <meta name="description" content="Age calculator lets view an age in years, months, and days" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!--<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400..700&display=swap" rel="stylesheet" />-->
+  <link rel="stylesheet" href="style.css" />
+  <!--<link rel="stylesheet" href="animo.css" />-->
+  <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="FM_part.css" />
+</head>
+<body>
+    <div class="grid__container">
+       <!--1st component-->
+        <header class="header sr-only">
+            <h1>Age calculator app</h1>
+        </header>
+        <!--2nd component-->
+        <main class="main">
+            <form class="form">
+                <div class="day">
+                    <label class="day__label" for="day__id">Day</label>
+                    <input class="day__input" id="day__id" type="text" placeholder="DD"/>
+                    <span class="day__validation">This field is required</span>
+                </div>
+                <div class="month">
+                    <label class="month__label" for="month__id">Month</label>
+                    <input class="month__input" id="month__id" type="text" placeholder="MM"/>
+                    <span class="month__validation">This field is required</span>
+                </div>
+                <div class="year">
+                    <label class="year__label" for="year__id">Year</label>
+                    <input class="year__input" id="year__id" type="text" placeholder="YYYY"/>
+                    <span class="year__validation">This field is required</span>
+                </div>
+                <button id="btn"><img src="assets/images/icon-arrow.svg" alt="Arrow" /></button>
+            </form>
+            <div class="result__years">
+                <span class="result__years-number">- -</span>
+                <p class="result__years-title">years</p>
+            </div>
+            <div class="result__months">
+              <span class="result__months-number">- -</span>
+              <p class="result__months-title">months</p>
+            </div>
+            <div class="result__days">
+                <span class="result__days-number">- -</span>
+                <p class="result__days-title">days</p>
+            </div>
+        </main>
+        <!--3rd component-->
+        <footer class="attribution">
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+            Coded by <a href="#">@Darionas</a>.
+        </footer>
+    </div>
+</body>
+<!--<script src="script.js"></script>-->
+</html>
