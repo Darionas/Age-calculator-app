@@ -28,6 +28,16 @@ body {
     background-color: var(--off-white);
 }
 
+.grid__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'header'
+        'main'
+        'attribution';
+    justify-items: center;
+}
+
 /*----------------Mobile layout--------------------*/
 /* style 1st component - mobile */
 /*https://www.w3schools.com/accessibility/accessibility_heading_levels.php*/
@@ -40,30 +50,49 @@ body {
     overflow: hidden;
 }
 
-/* style 2.1 component - mobile */
+/* style 2nd component - mobile */
 
-/* style 2.2 component - mobile */
-
-
-/*---------------------Desktop layout-------------------------*/
-
-
-@media screen and (min-width: 48rem) {
-
-   
-}
-/*----------------grid area names----------------------------*/
-
-
-
-
-/*
-.day, .month, .year {
-    display: inline-block;
+.hidden {
+    display: none !important;
 }
 
-#btn {
-    display: block;
+.main {
+    border-radius: 15px 15px 60px 15px;
+    margin: 3rem .8rem 0 .8rem;
+    background-color: var(--white);
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        'day month year'
+        'btn btn btn';
+    justify-items: center;
+    border-bottom: 2px solid var(--light-grey);
+    margin: 2rem 1rem 2rem 1rem;
+    
+}
+
+.day__label, .month__label, .year__label {
+    text-transform: uppercase;
+    font-size: .7rem;
+    font-weight: var(--fw-700);
+    color: var(--smokey-grey);
+    letter-spacing: .1rem;
+}
+
+.day__input, .month__input, .year__input {
+    padding: .5rem;
+    border-radius: .3rem;
+    border: 1px solid var(--light-grey);
+    font-size: 1rem;
+    color: var(--off-black);
+    font-weight: var(--fw-700);
+}
+
+input {
+    width: 4rem;
 }
 
 .day__label, .day__input, .day__validation {
@@ -78,15 +107,85 @@ body {
     display: block;
 }
 
+#btn {
+    position: relative;
+    top: 2rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--purple);
+    
+}
+
+.arrow {
+    position: relative;
+    left: 25%;
+    right: 25%;
+    width: 1.5rem;
+    padding: 1rem 0 1rem 0;
+    align-self: center;
+}
+
+.result {
+    margin: 4rem 1rem 0 1rem;
+    padding-bottom: 2rem;
+}
+
 .result__years, .result__months, .result__days {
-    display: block;
-    font-size: 10rem;
-    font-weight: 700;
-    line-height: 80%;
+    color: var(--off-black);
+    font-size: 2.5rem;
+    font-weight: var(--fw-800);
+    font-style: italic;
 }
 
 .number {
-    letter-spacing: 1.2rem;
+    /*letter-spacing: .4rem;*/
+    color: var(--purple);
 }
 
-*/
+/* style 3rd component - mobile */
+/*3rd component styled in external file*/
+
+/*---------------------Desktop layout-------------------------*/
+
+
+@media screen and (min-width: 48rem) {
+    
+    * {
+        display: none;
+    }
+   
+}
+/*----------------grid area names----------------------------*/
+
+.header {
+    grid-area: header;
+}
+
+.main {
+    grid-area: main;
+}
+
+.form {
+    grid-area: form;
+}
+
+.day {
+    grid-area: day;
+}
+
+.month {
+    grid-area: month;
+}
+
+.year {
+    grid-area: year;
+}
+
+#btn {
+    grid-area: btn;
+}
+
+.attribution {
+    grid-area: attribution;
+}

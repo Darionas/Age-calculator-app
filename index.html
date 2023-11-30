@@ -25,25 +25,25 @@
             <form class="form">
                 <div class="day">
                     <label class="day__label" for="day__id">Day</label>
-                    <input id="day__id" class="day__input" type="text" aria-describedby="day__validation-error" aria-invalid="true" required aria-required="true" placeholder="DD"/>
+                    <input id="day__id" class="day__input" type="text" size="2" maxlength="2" aria-describedby="day__validation-error" aria-invalid="true" required aria-required="true" placeholder="DD"/>
                     <span id="day__validation-error" class="day__validation hidden" role="alert">This field is required</span>
                 </div>
                 <div class="month">
                     <label class="month__label" for="month__id">Month</label>
-                    <input id="month__id" class="month__input" type="text" aria-describedby="month__validation-error" aria-invalid="true" required aria-required="true" placeholder="MM"/>
-                    <span id="month__validation-error" class="month__validation hidden">This field is required</span>
+                    <input id="month__id" class="month__input" type="text" size="2" maxlength="2" aria-describedby="month__validation-error" aria-invalid="true" required aria-required="true" placeholder="MM"/>
+                    <span id="month__validation-error" class="month__validation hidden" role="alert">This field is required</span>
                 </div>
                 <div class="year">
                     <label class="year__label" for="year__id">Year</label>
-                    <input id="year__id" class="year__input" type="text" aria-describedby="year__validation-error" aria-invalid="true" required aria-required="true" placeholder="YYYY"/>
-                    <span id="year__validation-error" class="year__validation hidden">This field is required</span>
+                    <input id="year__id" class="year__input" type="text" size="4" maxlength="4" aria-describedby="year__validation-error" aria-invalid="true" required aria-required="true" placeholder="YYYY"/>
+                    <span id="year__validation-error" class="year__validation hidden" role="alert">This field is required</span>
                 </div>
-                <button id="btn"><img src="assets/images/icon-arrow.svg" alt="Arrow" /></button>
+                <button id="btn"><img class="arrow" src="assets/images/icon-arrow.svg" alt="Arrow" /></button>
             </form>
             <section class="result" aria-label="age calculator result">
-                <p class="result__years"><span class="result__years-number number">--</span>years</p>
-                <p class="result__months"><span class="result__months-number number">--</span>months</p>
-                <p class="result__days"> <span class="result__days-number number">--</span>days</p>
+                <p class="result__years"><span class="result__years-number number">--</span> years</p>
+                <p class="result__months"><span class="result__months-number number">--</span> months</p>
+                <p class="result__days"> <span class="result__days-number number">--</span> days</p>
             </section>
         </main>
         <!--3rd component-->
