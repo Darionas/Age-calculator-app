@@ -8,7 +8,7 @@
   <meta name="description" content="Age calculator lets view an age in years, months, and days" />
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <!--<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400..700&display=swap" rel="stylesheet" />-->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <!--<link rel="stylesheet" href="animo.css" />-->
   <link rel="stylesheet" href="reset.css" />
@@ -25,33 +25,26 @@
             <form class="form">
                 <div class="day">
                     <label class="day__label" for="day__id">Day</label>
-                    <input class="day__input" id="day__id" type="text" placeholder="DD"/>
-                    <span class="day__validation">This field is required</span>
+                    <input id="day__id" class="day__input" type="text" aria-describedby="day__validation-error" aria-invalid="true" required aria-required="true" placeholder="DD"/>
+                    <span id="day__validation-error" class="day__validation hidden" role="alert">This field is required</span>
                 </div>
                 <div class="month">
                     <label class="month__label" for="month__id">Month</label>
-                    <input class="month__input" id="month__id" type="text" placeholder="MM"/>
-                    <span class="month__validation">This field is required</span>
+                    <input id="month__id" class="month__input" type="text" aria-describedby="month__validation-error" aria-invalid="true" required aria-required="true" placeholder="MM"/>
+                    <span id="month__validation-error" class="month__validation hidden">This field is required</span>
                 </div>
                 <div class="year">
                     <label class="year__label" for="year__id">Year</label>
-                    <input class="year__input" id="year__id" type="text" placeholder="YYYY"/>
-                    <span class="year__validation">This field is required</span>
+                    <input id="year__id" class="year__input" type="text" aria-describedby="year__validation-error" aria-invalid="true" required aria-required="true" placeholder="YYYY"/>
+                    <span id="year__validation-error" class="year__validation hidden">This field is required</span>
                 </div>
                 <button id="btn"><img src="assets/images/icon-arrow.svg" alt="Arrow" /></button>
             </form>
-            <div class="result__years">
-                <span class="result__years-number">- -</span>
-                <p class="result__years-title">years</p>
-            </div>
-            <div class="result__months">
-              <span class="result__months-number">- -</span>
-              <p class="result__months-title">months</p>
-            </div>
-            <div class="result__days">
-                <span class="result__days-number">- -</span>
-                <p class="result__days-title">days</p>
-            </div>
+            <section class="result" aria-label="age calculator result">
+                <p class="result__years"><span class="result__years-number number">--</span>years</p>
+                <p class="result__months"><span class="result__months-number number">--</span>months</p>
+                <p class="result__days"> <span class="result__days-number number">--</span>days</p>
+            </section>
         </main>
         <!--3rd component-->
         <footer class="attribution">

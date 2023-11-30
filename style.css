@@ -1,3 +1,63 @@
+:root {
+    /* Primary Color */
+    --purple: hsl(259, 100%, 65%);
+    --light-red: hsl(0, 100%, 67%);
+
+    /* Neutral Colors */
+    --white: hsl(0, 0%, 100%);
+    --off-white: hsl(0, 0%, 94%);
+    --light-grey: hsl(0, 0%, 86%);
+    --smokey-grey: hsl(0, 1%, 44%);
+    --off-black: hsl(0, 0%, 8%);
+    
+    /* fonts */
+    --ff-primary: 'Poppins', sans-serif;
+    --fw-400: 400;
+    --fw-700: 700;
+    --fw-800: 800;
+}
+
+
+body {
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-400);
+    /*font-size: var(--fs-16);*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--off-white);
+}
+
+/*----------------Mobile layout--------------------*/
+/* style 1st component - mobile */
+/*https://www.w3schools.com/accessibility/accessibility_heading_levels.php*/
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* style 2.1 component - mobile */
+
+/* style 2.2 component - mobile */
+
+
+/*---------------------Desktop layout-------------------------*/
+
+
+@media screen and (min-width: 48rem) {
+
+   
+}
+/*----------------grid area names----------------------------*/
+
+
+
+
+/*
 .day, .month, .year {
     display: inline-block;
 }
@@ -20,16 +80,13 @@
 
 .result__years, .result__months, .result__days {
     display: block;
+    font-size: 10rem;
+    font-weight: 700;
+    line-height: 80%;
 }
 
-.result__years-number, .result__years-title {
-        display: inline-block;
+.number {
+    letter-spacing: 1.2rem;
 }
 
-.result__months-number, .result__months-title {
-    display: inline-block;
-}
-
-.result__days-number, .result__days-title {
-    display: inline-block;
-}
+*/
