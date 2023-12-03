@@ -36,6 +36,8 @@ body {
         'main'
         'attribution';
     justify-items: center;
+    margin-top: 3rem;
+    /*border: 2px solid green;*/
 }
 
 /*----------------Mobile layout--------------------*/
@@ -53,12 +55,24 @@ body {
 /* style 2nd component - mobile */
 
 .hidden {
-    display: none !important;
+    visibility: hidden;
+    font-size: .5rem;
+    color: var(--light-red);
+    margin-bottom: 3.5rem;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.coloring {
+    color: var(--light-red) !important;
 }
 
 .main {
+    width: 100%;
     border-radius: 15px 15px 60px 15px;
-    margin: 3rem .8rem 0 .8rem;
+    /*margin: 3rem .8rem 0 .8rem;*/
     background-color: var(--white);
 }
 
@@ -71,12 +85,12 @@ body {
     justify-items: center;
     border-bottom: 2px solid var(--light-grey);
     margin: 2rem 1rem 2rem 1rem;
-    
+    position: relative;
 }
 
 .day__label, .month__label, .year__label {
     text-transform: uppercase;
-    font-size: .7rem;
+    font-size: .6rem;
     font-weight: var(--fw-700);
     color: var(--smokey-grey);
     letter-spacing: .1rem;
@@ -92,7 +106,7 @@ body {
 }
 
 input {
-    width: 4rem;
+    width: 4.5rem;
 }
 
 .day__label, .day__input, .day__validation {
@@ -108,27 +122,26 @@ input {
 }
 
 #btn {
-    position: relative;
-    top: 2rem;
+    display: grid;
+    justify-items: center;
+    position: fixed;
+    top: 10.5rem;
     width: 3.5rem;
     border-radius: 50%;
     border: none;
     background-color: var(--purple);
-    
 }
 
 .arrow {
-    position: relative;
-    left: 25%;
-    right: 25%;
     width: 1.5rem;
     padding: 1rem 0 1rem 0;
     align-self: center;
 }
 
 .result {
-    margin: 4rem 1rem 0 1rem;
+    margin: 3rem 1rem 0 1rem;
     padding-bottom: 2rem;
+    
 }
 
 .result__years, .result__months, .result__days {
@@ -136,6 +149,7 @@ input {
     font-size: 2.5rem;
     font-weight: var(--fw-800);
     font-style: italic;
+    line-height: 2.8rem;
 }
 
 .number {
@@ -150,9 +164,46 @@ input {
 
 
 @media screen and (min-width: 48rem) {
-    
+    /*
     * {
         display: none;
+    }*/
+                
+    .main {
+        width: 24rem;
+    }
+    
+    .form {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+            'day month year .'
+            '. . . btn';
+        justify-items: center;
+        height: 5.5rem;
+        position: relative;
+        border-bottom: 2px solid var(--light-grey);
+        margin: 2rem 1rem 0 1rem;
+        /*border: 2px solid green;*/
+    }
+    
+    .day__input, .month__input, .year__input:hover {
+        cursor: pointer;
+    }
+    
+    #btn {
+        position: fixed;
+        top: 8.5rem;
+        justify-self: end;
+    }
+    
+    #btn:hover {
+        cursor: pointer;
+        background-color: var(--off-black);
+    }
+        
+    .result {
+        margin: 1.5rem 1rem 0 1rem;
     }
    
 }
