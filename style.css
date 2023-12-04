@@ -65,6 +65,10 @@ body {
     visibility: visible;
 }
 
+.hide {
+    visibility: hidden;
+}
+
 .coloring {
     color: var(--light-red) !important;
 }
