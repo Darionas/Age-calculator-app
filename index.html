@@ -13,6 +13,23 @@
   <!--<link rel="stylesheet" href="animo.css" />-->
   <link rel="stylesheet" href="reset.css" />
   <link rel="stylesheet" href="FM_part.css" />
+  <style>
+        .number {
+            animation-name: increased_number;
+            animation-duration: 3s;
+        }
+
+        @keyframes increased_number {
+            from {
+                font-size: 0.5rem; 
+                color: var(--off-black);
+            }
+            to {
+                font-size: 2.5rem;
+                color: var(--purple);
+            }
+        }
+  </style>
 </head>
 <body>
     <div class="grid__container">
@@ -41,9 +58,9 @@
                 <button id="btn"><img class="arrow" src="assets/images/icon-arrow.svg" alt="Arrow" /></button>
             </form>
             <section class="result" aria-label="age calculator result">
-                <p class="result__years"><span class="result__years-number number">--</span> year<span class="y">s</span></p>
-                <p class="result__months"><span class="result__months-number number">--</span> month<span class="m">s</span></p>
-                <p class="result__days"> <span class="result__days-number number">--</span> day<span class="d">s</span></p>
+                <p class="result__years"><span class="result__years-number animo">--</span> year<span class="y">s</span></p>
+                <p class="result__months"><span class="result__months-number animo">--</span> month<span class="m">s</span></p>
+                <p class="result__days"> <span class="result__days-number animo">--</span> day<span class="d">s</span></p>
             </section>
         </main>
         <!--3rd component-->
@@ -52,6 +69,7 @@
             Coded by <a href="#">@Darionas</a>.
         </footer>
     </div>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
+
 </html>

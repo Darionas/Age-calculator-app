@@ -17,7 +17,8 @@ const monthsNumber = document.querySelector('.result__months-number');
 const daysNumber = document.querySelector('.result__days-number');
 const inputs = document.getElementsByTagName('input');
 const btn = document.querySelector('#btn');
-let dateInput;
+let animos = document.getElementsByClassName('animo');
+let dateInput, val;
 
 
 btn.addEventListener('click', function(e) {
@@ -27,9 +28,11 @@ btn.addEventListener('click', function(e) {
     const getMonth = today.getMonth();
     const getDay = today.getDate();
     const dayVal = + day.value;
-    const monthVal = + month.value -1;
-    const yearVal = + year.value;      
-   
+    const monthVal = + month.value - 1;
+    const yearVal = + year.value;   
+    console.log(getMonth);
+    console.log(monthVal);
+      
     dateInput = new Date(yearVal, monthVal, dayVal);
                 
     for(let i=0; i < inputs.length; i++) {
@@ -48,7 +51,8 @@ btn.addEventListener('click', function(e) {
         } else {
             labels[i].classList.remove('coloring');
             error[i].classList.remove('visible');
-        }            
+        }   
+        
     }
     
     
@@ -61,7 +65,7 @@ btn.addEventListener('click', function(e) {
             case 8 : case 3 : case 5 : case 10 :
                 return 30;
             default :
-                return 31
+                return 31;
         }
     }
     
@@ -69,7 +73,9 @@ btn.addEventListener('click', function(e) {
         return monthVal >= 0 && monthVal < 12 && dayVal > 0 && dayVal <= daysInMonth(monthVal, yearVal);
     }
     
-    const val = isValid(dayVal, monthVal, yearVal);
+    if(dayVal > 0 && monthVal > 0 && yearVal > 0) {
+        val = isValid(dayVal, monthVal, yearVal);
+    }
    //-----------------------------------------------------
     
     if(val == false || dateInput > today) {
@@ -103,20 +109,35 @@ btn.addEventListener('click', function(e) {
         yearError.classList.add('visible');
         yearError.innerHTML = 'Must be in the past';
     }
+    
+    console.log(dayError.classList.contains('visible'))
        
    
-    let yearResult = getYear - yearVal;
-    let monthResult, dayResult;
-    if(dateInput < today) {
-        if (getMonth < monthVal) {
-            monthResult = getMonth + 12 - monthVal;
+    //let yearResult = (yearVal > 0) ? getYear - yearVal : 0;
+    let yearResult, monthResult, dayResult;
+    if(dateInput) {
+        if(getYear < yearVal) {
+            yearResult = 0;
+        } else if(getYear > yearVal) {
+            yearResult = (yearVal > 0) ? getYear - yearVal : 0;
         } else {
-            monthResult = getMonth - monthVal;
+            yearResult = 0;
         }
-        if (getDay < dayVal) {
-            dayResult = getDay + 30 - dayVal;
+        
+        if(monthError.classList.contains('visible') === true) {
+            monthResult = 0;
+        } else if(getMonth < monthVal) {
+            monthResult = (monthVal > 0) ? getMonth + 12 - monthVal : 0;
         } else {
-            dayResult = getDay - dayVal;
+            monthResult = (monthVal > 0) ? getMonth - monthVal : 0;
+        }
+       
+        if (getDay < dayVal) {
+            dayResult = (dayVal > 0) ? getDay + 30 - dayVal : 0;
+        } else if(dayError.classList.contains('visible') === true) {
+            dayResult = 0;
+        } else {
+            dayResult = (dayVal > 0) ? getDay - dayVal : 0;
         }
     
         if(yearResult > 1 || yearResult == 0) {
@@ -153,7 +174,23 @@ btn.addEventListener('click', function(e) {
         }
 
     }
-})
+    
+    //animation
+    restart('number');
+
+    
+});
 
 
-        
+
+//animation
+//https://stackoverflow.com/questions/35200605/refire-css-animation-with-javascript-after-a-previous-one-is-complete#answer-35203145
+function restart(anim) {    
+    for(let animo of animos) { 
+        animo.classList.remove(anim);
+        setTimeout(function() {
+            animo.classList.add(anim);
+        }, 0);
+    
+    }
+}

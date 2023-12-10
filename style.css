@@ -156,8 +156,7 @@ input {
     line-height: 2.8rem;
 }
 
-.number {
-    /*letter-spacing: .4rem;*/
+.animo {
     color: var(--purple);
 }
 
