@@ -21,7 +21,6 @@
 body {
     font-family: var(--ff-primary);
     font-weight: var(--fw-400);
-    /*font-size: var(--fs-16);*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -73,10 +72,13 @@ body {
     color: var(--light-red) !important;
 }
 
+.border_color {
+    border-color: var(--light-red) !important;
+}
+
 .main {
     width: 100%;
     border-radius: 15px 15px 60px 15px;
-    /*margin: 3rem .8rem 0 .8rem;*/
     background-color: var(--white);
 }
 
@@ -167,10 +169,6 @@ input {
 
 
 @media screen and (min-width: 48rem) {
-    /*
-    * {
-        display: none;
-    }*/
                 
     .main {
         width: 24rem;
@@ -187,11 +185,11 @@ input {
         position: relative;
         border-bottom: 2px solid var(--light-grey);
         margin: 2rem 1rem 0 1rem;
-        /*border: 2px solid green;*/
     }
     
-    .day__input, .month__input, .year__input:hover {
+    .day__input:hover, .month__input:hover, .year__input:hover {
         cursor: pointer;
+        border-color: var(--off-black);
     }
     
     #btn {

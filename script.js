@@ -18,7 +18,7 @@ const daysNumber = document.querySelector('.result__days-number');
 const inputs = document.getElementsByTagName('input');
 const btn = document.querySelector('#btn');
 let animos = document.getElementsByClassName('animo');
-let dateInput, val;
+let dateInput, val, yearResult, monthResult, dayResult;
 
 
 btn.addEventListener('click', function(e) {
@@ -30,8 +30,6 @@ btn.addEventListener('click', function(e) {
     const dayVal = + day.value;
     const monthVal = + month.value - 1;
     const yearVal = + year.value;   
-    console.log(getMonth);
-    console.log(monthVal);
       
     dateInput = new Date(yearVal, monthVal, dayVal);
                 
@@ -39,16 +37,19 @@ btn.addEventListener('click', function(e) {
         let input = Number(inputs[i].value);
         
     if(input === null || input === undefined || input === 0) {
+        inputs[i].classList.add('border_color');
         labels[i].classList.add('coloring');
         error[i].classList.add('visible');
         error[i].innerHTML = 'This field is required';
             
         } else if(isNaN(input)) {
+            inputs[i].classList.add('border_color');
             labels[i].classList.add('coloring');
             error[i].classList.add('visible');
             error[i].innerHTML = 'Number is required';
             
         } else {
+            inputs[i].classList.remove('border_color');
             labels[i].classList.remove('coloring');
             error[i].classList.remove('visible');
         }   
@@ -79,6 +80,7 @@ btn.addEventListener('click', function(e) {
    //-----------------------------------------------------
     
     if(val == false || dateInput > today) {
+        day.classList.add('border_color');
         dayLabel.classList.add('coloring');
         dayError.classList.add('visible');
         dayError.innerHTML = 'Must be a valid day';
@@ -86,10 +88,12 @@ btn.addEventListener('click', function(e) {
     } 
     
     if(monthVal > 11 && monthVal > getMonth) {
+        day.classList.add('border_color');
         dayLabel.classList.add('coloring');
         dayError.classList.add('visible');
         dayError.innerHTML = 'Must be a valid day';
         
+        month.classList.add('border_color');
         monthLabel.classList.add('coloring');
         monthError.classList.add('visible');
         monthError.innerHTML = 'Must be a valid month';
@@ -97,82 +101,60 @@ btn.addEventListener('click', function(e) {
     } 
     
     if(yearVal > getYear) {
+        day.classList.add('border_color');
         dayLabel.classList.add('coloring');
         dayError.classList.add('visible');
         dayError.innerHTML = 'Must be a valid day';
         
+        month.classList.add('border_color');
         monthLabel.classList.add('coloring');
         monthError.classList.add('visible');
         monthError.innerHTML = 'Must be a valid month';
         
+        year.classList.add('border_color');
         yearLabel.classList.add('coloring');
         yearError.classList.add('visible');
         yearError.innerHTML = 'Must be in the past';
     }
     
-    console.log(dayError.classList.contains('visible'))
-       
+      
    
-    //let yearResult = (yearVal > 0) ? getYear - yearVal : 0;
-    let yearResult, monthResult, dayResult;
-    if(dateInput) {
-        if(getYear < yearVal) {
-            yearResult = 0;
-        } else if(getYear > yearVal) {
-            yearResult = (yearVal > 0) ? getYear - yearVal : 0;
-        } else {
-            yearResult = 0;
-        }
+    //https://stackoverflow.com/questions/17732897/difference-between-two-dates-in-years-months-days-in-javascript#answer-49201872
+    if(dateInput < today && val == true) {
+        const yearInput = dateInput.getFullYear();
+        const february = (yearInput % 4 === 0 && yearInput % 100 !== 0) || yearInput % 400 === 0 ? 29 : 28;
+        const daysInMonth = [31, february, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         
-        if(monthError.classList.contains('visible') === true) {
-            monthResult = 0;
-        } else if(getMonth < monthVal) {
-            monthResult = (monthVal > 0) ? getMonth + 12 - monthVal : 0;
-        } else {
-            monthResult = (monthVal > 0) ? getMonth - monthVal : 0;
+        yearResult = getYear - yearInput;
+        
+        monthResult = getMonth - dateInput.getMonth();
+        if(monthResult < 0) {
+            yearResult--;
+            monthResult += 12;
         }
        
-        if (getDay < dayVal) {
-            dayResult = (dayVal > 0) ? getDay + 30 - dayVal : 0;
-        } else if(dayError.classList.contains('visible') === true) {
-            dayResult = 0;
-        } else {
-            dayResult = (dayVal > 0) ? getDay - dayVal : 0;
-        }
-    
-        if(yearResult > 1 || yearResult == 0) {
-            document.querySelector('.y').classList.add('visible');
-            document.querySelector('.y').classList.remove('hide');
-            yearsNumber.innerHTML = yearResult;
-        } 
-        if(yearResult == 1) {
-            document.querySelector('.y').classList.remove('visible');
-            document.querySelector('.y').classList.add('hide');
-            yearsNumber.innerHTML = yearResult;
+        dayResult = getDay - dateInput.getDate();
+        if(dayResult < 0) {
+            if(monthResult > 0) {
+                monthResult--;
+            } else {
+                yearResult--;
+                monthResult = 11;
+            }
+            dayResult += daysInMonth[dateInput.getMonth()];
         }
         
-        if(monthResult > 1 || monthResult == 0) {
-            document.querySelector('.m').classList.add('visible');
-            document.querySelector('.m').classList.remove('hide');
-            monthsNumber.innerHTML = monthResult;
-        } 
-        if(monthResult == 1) {
-            document.querySelector('.m').classList.remove('visible'); 
-            document.querySelector('.m').classList.add('hide');
-            monthsNumber.innerHTML = monthResult;
-        }
-        
-        if(dayResult > 1 || dayResult == 0) {
-            document.querySelector('.d').classList.add('visible');
-            document.querySelector('.d').classList.remove('hide');
-            daysNumber.innerHTML = dayResult;
-        } 
-        if(dayResult == 1) {
-            document.querySelector('.d').classList.remove('visible'); 
-            document.querySelector('.d').classList.add('hide');
-            daysNumber.innerHTML = dayResult;
-        }
+        yearsNumber.innerHTML = yearResult;
+        monthsNumber.innerHTML = monthResult;
+        daysNumber.innerHTML = dayResult;
 
+    } else {
+        yearResult = 0;
+        yearsNumber.innerHTML = yearResult;
+        monthResult = 0;
+        monthsNumber.innerHTML = monthResult;
+        dayResult = 0;
+        daysNumber.innerHTML = dayResult;
     }
     
     //animation
@@ -180,8 +162,6 @@ btn.addEventListener('click', function(e) {
 
     
 });
-
-
 
 //animation
 //https://stackoverflow.com/questions/35200605/refire-css-animation-with-javascript-after-a-previous-one-is-complete#answer-35203145
