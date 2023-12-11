@@ -160,7 +160,6 @@ btn.addEventListener('click', function(e) {
     //animation
     restart('number');
 
-    
 });
 
 //animation
