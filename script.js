@@ -33,6 +33,7 @@ btn.addEventListener('click', function(e) {
       
     dateInput = new Date(yearVal, monthVal, dayVal);
                 
+    //validation of date input
     for(let i=0; i < inputs.length; i++) {
         let input = Number(inputs[i].value);
         
@@ -118,7 +119,7 @@ btn.addEventListener('click', function(e) {
     }
     
       
-   
+    //calculate years, months, days
     //https://stackoverflow.com/questions/17732897/difference-between-two-dates-in-years-months-days-in-javascript#answer-49201872
     if(dateInput < today && val == true) {
         const yearInput = dateInput.getFullYear();
@@ -156,6 +157,35 @@ btn.addEventListener('click', function(e) {
         dayResult = 0;
         daysNumber.innerHTML = dayResult;
     }
+    
+    //add/remove -s in words year, month, day
+    if(yearResult > 1 || yearResult == 0) {
+        document.querySelector('.y').classList.add('visible');
+        document.querySelector('.y').classList.remove('hide');
+    } 
+    if(yearResult == 1) {
+        document.querySelector('.y').classList.remove('visible');
+        document.querySelector('.y').classList.add('hide');
+    }
+    
+    if(monthResult > 1 || monthResult == 0) {
+        document.querySelector('.m').classList.add('visible');
+        document.querySelector('.m').classList.remove('hide');
+    } 
+    if(monthResult == 1) {
+        document.querySelector('.m').classList.remove('visible'); 
+        document.querySelector('.m').classList.add('hide');
+    }
+    
+    if(dayResult > 1 || dayResult == 0) {
+        document.querySelector('.d').classList.add('visible');
+        document.querySelector('.d').classList.remove('hide');
+    } 
+    if(dayResult == 1) {
+        document.querySelector('.d').classList.remove('visible'); 
+        document.querySelector('.d').classList.add('hide');
+    }
+
     
     //animation
     restart('number');
